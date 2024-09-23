@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Album List</title>
+</head>
+<body>
+    <h1>Albums</h1>
+    <ul>
+         {% for album in albums %} 
+
+        <p>album name: {{ album.title }}</p>
+        <p>album release date: {{ album.release_date }}</p>
+        <p>album artist: {{ album.artist }}</p>
+
+        
+            {% comment %} <li>{{ album.title }} (Release Date: {{ album.release_date }}) - {{ album.artist.name }}</li> {% endcomment %}
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>

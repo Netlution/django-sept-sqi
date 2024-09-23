@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Artist List</title>
+</head>
+<body>
+    <h1>Artists</h1>
+    <ul>
+        {% for artist in artists %}
+        <p>Artist name: {{ artist.name }}</p>
+        <p>debut year: {{ artist.debut_year }}</p>
+
+        {% comment %} <li>{{ artist }}</li> {% endcomment %}
+        
+            {% comment %} <li>{{ artist.name }} (Debut Year: {{ artist.debut_year }})</li> {% endcomment %}
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
