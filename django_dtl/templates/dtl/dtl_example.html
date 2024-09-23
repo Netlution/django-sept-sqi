@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTL Syntax</title>
+</head>
+<body>
+    <h1>{{ my_name }} </h1>
+
+     {% if is_dark %}
+
+    <p>you are dark in complexion</p>
+    
+    {% else %}
+
+    <p>you are not dark in complexion</p>
+    {% endif %} 
+
+    <ul>
+    
+    {% for name in students %}
+
+    <li>{{ name }}</li>
+    
+    {% endfor %}
+    
+
+    </ul>
+</body>
+</html>

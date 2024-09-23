@@ -1,0 +1,19 @@
+<!-- bakery/templates/bakery/home.html -->
+{% extends 'partials/base.html' %}
+
+{% block content %}
+<h1>Welcome to Our Local Bakery!</h1>
+<p>Explore our delicious menu and freshly baked treats.</p>
+<button onclick="window.location.href='{% url 'menu' %}'">Check Out Our Menu</button>
+
+<div id="newsletter-popup" class="popup">
+    <div class="popup-content">
+        <span class="close">&times;</span>
+        <h2>Sign up for our newsletter!</h2>
+        <form method="post">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

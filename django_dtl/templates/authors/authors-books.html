@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author</title>
+</head>
+<body>
+
+ <h3>
+  Name of authors
+   </h3>
+    <ul>
+    {% for author in all_the_authors %}
+    <li>{{ author }}</li>
+    {% endfor %}
+    </ul>
+   <h3>
+  Book by authors
+   </h3>
+    <ul>
+    {% for book in all_the_books %}
+    <li>{{ book }}</li>
+    {% endfor %}
+    </ul>
+
+   <h3>
+   Sorted Authors
+   </h3>
+    <ul>
+    {% for sorted in sorted_the_authors %}
+    <li>{{ sorted }}</li>
+    {% endfor %}
+    </ul>
+
+    <h3>
+   Book written by certain author
+   </h3>
+    
+    <p>{{sugar_girls}}</p>
+
+    <h3>
+  recently published
+   </h3>
+    
+   <ul>
+    {% for recently_published in recently_published %}
+    <li>{{ recently_published }}</li>
+    {% endfor %}
+    </ul>
+
+   <h3>
+  Name of authors
+   </h3>
+    <ul>
+    {% for author in all_the_authors %}
+    <p>First Name: {{ author.first_name}}</p>
+    <p>Last Name: {{ author.last_name}}</p>
+    <p>Birth Name: {{ author.birth_date}}</p>
+    {% endfor %}
+    </ul>
+    
+     <h3>
+  New published after 2023
+   </h3>
+    <ul>
+    {% for new in new_published %}
+    <li>{{new}}</li>
+    {% endfor %}
+    </ul>
+
+    <h3>
+  Name of authors with their books
+   </h3>
+    <ul>
+   <h3>{% for author in all_the_authors %}</h3>
+    <h4>{{ author }}</h4>
+        {% for book in author.book_set.all %}
+        <li>{{ book }}</li>
+
+
+        {% endfor %}
+       
+
+    {% endfor %}
+    </ul>
+   <h3>
+
+</body>
+</html>
