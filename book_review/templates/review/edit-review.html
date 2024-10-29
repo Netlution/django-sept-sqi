@@ -1,0 +1,10 @@
+{% extends "partials/base.html" %}
+
+{% block body %}
+  <div class="create-review" id="centered">
+    <form action="{% url 'review:edit_review' review.pk %}" method="POST" name="form_for_treehouse_contest">
+    {% include "partials/review-form.html" with heading="Edit your Review" %}
+    </form>
+   </div>
+
+{% endblock body %}

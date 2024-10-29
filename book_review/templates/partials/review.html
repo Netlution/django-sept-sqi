@@ -1,0 +1,32 @@
+{% csrf_token %}
+<h2 class="review-heading">{{ heading }} for {{ book.title }}</h2>
+{% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <p class="field-error">{{ error }}</p>
+    {% endfor %}        
+{% endif %}
+{% if form.book.errors %}
+    {% for error in form.book.errors %}
+    <p class="field-error">{{ error }}</p>
+    {% endfor %}        
+{% endif %}
+<input type="hidden" name="book" value="{{ book.id }}">
+{% if form.added_by.errors %}
+    {% for error in form.added_by.errors %}
+    <p class="field-error">{{ error }}</p>
+    {% endfor %}        
+{% endif %}
+<input type="hidden" name="added_by" value="{{ request.user.id }}">
+{% if form.review.errors %}
+    {% for error in form.review.errors %}
+    <p class="field-error">{{ error }}</p>
+    {% endfor %}        
+{% endif %}
+<textarea name="review" rows="8" placeholder="What did you think about {{ book.title }}?">{% if form.review.value %}{{ form.review.value }}{% endif %}</textarea>
+{% if form.rating.errors %}
+    {% for error in form.rating.errors %}
+    <p class="field-error">{{ error }}</p>
+    {% endfor %}        
+{% endif %}
+<input type="number" name="rating" placeholder="Rating" {% if form.rating.value %}value="{{ form.rating.value }}"{% endif %}><br>
+<input type="submit" value="Submit" id="send"><br>

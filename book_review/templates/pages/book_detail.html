@@ -1,0 +1,39 @@
+{% extends "partials/base.html" %}
+
+{% block body %}
+<div class="book-details-container">
+    <div class="book-image">
+        <img src="{{ book.cover_image.url }}" alt="{{ book.title }}">
+    </div>
+    <div class="book-info">
+        <h3>{{ book.title }}</h3>
+        <h4>By {{ book.author }}</h4>
+        <h5>Genre: {{ book.get_genre_display }}</h5>
+        <h5>Published on {{ book.publication_date }}</h5>
+        <h5>ISBN {{ book.isbn }}</h5>
+        <h5>{{ book.number_of_pages }} pages</h5>
+        <a class="leave-review-btn" href="{% url 'review:create_review' book.pk %}">Leave a Review</a>
+    </div>
+</div>
+
+<div class="reviews">
+{% if reviews %}
+    <h2 style="text-align: center;">Reviews</h2>
+    {% for review in reviews %}
+    <div class="review">
+        <h3>{{ review.review }}</h3>
+        <p>Rating: {{ review.rating }}</p>
+        <h4>{{ review.added_by }}</h4>
+        <p>{{ review.added_on }}</p>
+        <div class="review-actions">
+            <button class="review-btn edit {% if request.user != review.added_by %}disabled{% endif %}" onclick="window.location.href='{% url 'review:edit_review' review.id %}'" type="click" {% if request.user != review.added_by %}disabled{% endif %}>Edit</button>
+            <button class="review-btn delete {% if request.user != review.added_by %}disabled{% endif %}" onclick="window.location.href='{% url 'review:confirm_delete_review' review.id %}'" type="click" {% if request.user != review.added_by %}disabled{% endif %}>Delete</button>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <h4 style="text-align: center;">No reviews for {{ book.title }}</h4>
+{% endif %}
+</div>
+
+{% endblock body %}

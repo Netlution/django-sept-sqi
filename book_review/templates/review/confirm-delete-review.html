@@ -1,0 +1,13 @@
+{% extends "partials/base.html" %}
+
+{% block body %}
+<div>You left this review for {{ book.title }}</div>
+<p>{{ review.review }}</p>
+<p>Rating: {{ review.rating }}</p>
+<div>Are you sure you want to delete this review?</div>
+<form action="{% url 'review:delete_review' review.id %}" method="POST">
+    <button class="review-btn edit" onclick="window.location.href='{% url 'pages:book_detail' book.id %}'" type="click">No, take me back</button>
+    {% csrf_token %}
+    <button class="review-btn delete" type="submit">Yes, I'm sure</button>
+</form>
+{% endblock body %}
